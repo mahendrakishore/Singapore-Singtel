@@ -1,10 +1,17 @@
 
-Feature: Title of your feature
-  I want to use this template for my feature file
+Feature: Test the typicode posts, comment and user list json request
 
-  @tag1
-  Scenario: Title of your scenario
-    Given I want to write a step with precondition
+
+ @posts-post
+  Scenario: User make a  posts
+    Given User make a posts on typidode with below values
+    | userId | title | body |
+    |   10   |  foo1  | bar1 |
+    
+        
+  @posts-get
+  Scenario: User get all the list of post
+    Given User hit the typidode get request
 
 
   #@tag2
