@@ -1,4 +1,10 @@
+# How to Run the project
+take the MASTER branch from https://github.com/mahendrakishore/jpcm
+download all dependeincies
+project follows the TESTNG RUNNER with tag defined in it which are reffrence to BDD CUCUMMBER feature file
+while running the rest api call FEATURE FILE will to STEP DEFINATION which will look for implemention in ADAPTER class and all the data is save in CONTEXT CLASS for each LOCAL THREAD
 
+# To RUN the rest api look for CucumberTestNGRunner.class and RUN AS TestNG Test
  
  JPMC -603 – Software Development Engineer in Test (Backend)
 Imagine you are building a social network. Starting from simple functionality. Users are now able to make posts and comment on them. 
