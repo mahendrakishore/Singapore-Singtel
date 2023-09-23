@@ -5,11 +5,11 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 public class Steps {
+	
+	private static Adapter ADAPTER = new Adapter();
 
 	@Given("I want to write a step with precondition")
-	public void  methodget(){		
-	Response response = RestAssured.get("https://reqres.in/api/users?page=2");
-	System.out.println(response.prettyPrint());
-	System.out.println(response.getStatusCode());
-	System.out.println(response.getTime());}
+	public void  methodget(){	
+		ADAPTER.getPost();
+	}
 }
