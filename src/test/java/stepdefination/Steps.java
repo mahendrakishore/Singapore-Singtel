@@ -24,4 +24,15 @@ public class Steps {
 	       ADAPTER.createPost(dtlm);
 	       ADAPTER.createPostRequest();
 	    }
+	   
+	   @Given("User make a comment with below values")
+	    public void makeCommentPosts(DataTable dt) throws JsonProcessingException {
+	        List<Map<String, String>> dtlm = dt.asMaps(String.class,String.class);
+	       ADAPTER.createCommentOnPost(dtlm);
+	     	    }
+	   
+	   @Given("User post the comment on postsid {string} on typidode")
+	    public void makeCommentOnPosts(String id) throws JsonProcessingException {
+	          ADAPTER.createCommentOnPostRequest(id);
+	    }
 }

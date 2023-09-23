@@ -7,7 +7,9 @@ public class Context {
 	
 	 private static final String GET_RESPONSE = "GET_RESPONSE";
 	 private static final String POST_REQUEST_STRING = "POST_REQUEST_STRING";	
-	 private static final String POST_RESPONSE = "POST_RESPONSE";	   
+	 private static final String POST_RESPONSE = "POST_RESPONSE";
+	 private static final String COMMENT_REQUEST_STRING = "POST_REQUEST_STRING";	
+	 private static final String COMMENT_RESPONSE = "POST_RESPONSE";	
 
 	    private static final String BASEURI = "BASEURI";
 	    ThreadLocal<Map<String,Object>> localThread = ThreadLocal.withInitial(HashMap::new);
@@ -53,6 +55,18 @@ public class Context {
 	    public Object getPostResponse(){
 	     return get(POST_RESPONSE);
 	    }
+	    public void setCommentOnPostRequestString(Object val){
+	        set(COMMENT_REQUEST_STRING,val);
+	    }
+	    public Object getCommentOnPostRequestString(){
+	     return get(COMMENT_REQUEST_STRING);
+	    }
 
+	    public void setCommentOnPostResponse(Object val){
+	        set(COMMENT_RESPONSE,val);
+	    }
+	    public Object getCommentOnPostResponse(){
+	     return get(COMMENT_RESPONSE);
+	    }
 
 }
