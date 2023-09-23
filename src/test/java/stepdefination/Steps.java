@@ -37,6 +37,16 @@ public class Steps {
 	          ADAPTER.createCommentOnPostRequest(id);
 	    }
 	   
+	   @Then("User verifies the posts")
+	    public void postsVerification() throws JsonProcessingException {
+	          ADAPTER.postsValidation();
+	    }
+	   
+	   @Then("User verifies the comment on post")
+	    public void commentVerification() throws JsonProcessingException {
+	          ADAPTER.commentValidation();
+	    }
+	   
 	   @Then("^User verifies the user count is (\\d+)$")
 	    public void userListVerification(int usercount) throws JsonProcessingException {
 	          ADAPTER.userListValidation(usercount);
