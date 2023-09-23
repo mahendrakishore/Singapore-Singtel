@@ -4,7 +4,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 
-@CucumberOptions(tags = "@comment-post", features = "src/test/resources/features/post-comment.feature", 
+@CucumberOptions(tags = "@user-list-get", features = "src/test/resources/features/post-comment.feature", 
 glue = "stepdefination",monochrome=true,publish=true
 		)
 

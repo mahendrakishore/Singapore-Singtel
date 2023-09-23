@@ -3,6 +3,9 @@ package stepdefination;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONObject;
+import org.junit.Assert;
+
 import io.cucumber.core.internal.com.fasterxml.jackson.core.JsonProcessingException;
 import io.cucumber.core.internal.com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.RestAssured;
@@ -12,30 +15,32 @@ import io.restassured.specification.RequestSpecification;
 
 public class Adapter {
 	
-	private static final String BASE_URL = "https://jsonplaceholder.typicode.com/posts";
+	private static final String BASE_URL = "https://jsonplaceholder.typicode.com/";
 	private static final Context CONTEXT = new Context();
 	
 	
-	/*
-	 * public void getPost() { Response response =
-	 * RestAssured.get("https://jsonplaceholder.typicode.com/posts");
-	 * System.out.println(response.prettyPrint());
-	 * System.out.println(response.getStatusCode());
-	 * System.out.println(response.getTime());}
-	 */	
-	public void getPostWithValidation() {
+	public void getUserList() {
 		CONTEXT.setUri(BASE_URL);
 		Response response;
 		String uri = CONTEXT.getUri();
-		System.out.println(uri);
-		RestAssured.baseURI = uri;
+		String userListUri = uri+"users";
+		System.out.println(userListUri);
+		RestAssured.baseURI = userListUri;
 		RequestSpecification request = RestAssured.given();
 		request.header("Content-Type", "application/json");
 		response = request.get();
-		CONTEXT.setGetResponse(response);
-		Response repString = (Response) CONTEXT.getGetResponse();
-		System.out.println(repString.prettyPrint());
+		CONTEXT.setUserListGetResponse(response);
 		}
+	
+	public void userListValidation(int lCount) {
+		Response repString = (Response) CONTEXT.getUserListGetResponse();
+		Assert.assertEquals("Wrong Statu Code",200,repString.statusCode());
+		JsonPath js = new JsonPath(repString.asString());
+		int cSize = js.getList("$").size();
+		System.out.println(cSize);
+		Assert.assertEquals("User list count not matching",10,cSize);
+		}
+
 
 
     public void createPost(List<Map<String, String>> dtl) throws JsonProcessingException {
@@ -55,8 +60,9 @@ public class Adapter {
     	CONTEXT.setUri(BASE_URL);
 		Response response;
 		String uri = CONTEXT.getUri();
-		System.out.println(uri);
-		RestAssured.baseURI = uri;
+		String postsUri = uri+"posts";
+		System.out.println(postsUri);
+		RestAssured.baseURI = postsUri;
 		String body =  (String) CONTEXT.getPostRequestString();
 		RequestSpecification request = RestAssured.given();
 		request.header("Content-Type", "application/json");
@@ -82,7 +88,7 @@ public class Adapter {
     	CONTEXT.setUri(BASE_URL);
 		Response response;
 		String uri = CONTEXT.getUri();
-		String commentUri = uri+"/"+id+"/comments";
+		String commentUri = uri+"posts"+"/"+id+"/comments";
 		System.out.println(commentUri);
 		RestAssured.baseURI = commentUri;
 		String body =  (String) CONTEXT.getCommentOnPostRequestString();

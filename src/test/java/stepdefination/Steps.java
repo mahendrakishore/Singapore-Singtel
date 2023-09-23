@@ -6,6 +6,7 @@ import java.util.Map;
 import io.cucumber.core.internal.com.fasterxml.jackson.core.JsonProcessingException;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
@@ -14,8 +15,8 @@ public class Steps {
 	private static Adapter ADAPTER = new Adapter();
 
 	@Given("User hit the typidode get request")
-	public void  methodget(){	
-		ADAPTER.getPostWithValidation();
+	public void  userList(){	
+		ADAPTER.getUserList();
 	}
 	
 	   @Given("User make a posts on typidode with below values")
@@ -35,4 +36,10 @@ public class Steps {
 	    public void makeCommentOnPosts(String id) throws JsonProcessingException {
 	          ADAPTER.createCommentOnPostRequest(id);
 	    }
+	   
+	   @Then("^User verifies the user count is (\\d+)$")
+	    public void userListVerification(int usercount) throws JsonProcessingException {
+	          ADAPTER.userListValidation(usercount);
+	    }
+	   
 }

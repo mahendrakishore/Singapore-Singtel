@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Context {
 	
-	 private static final String GET_RESPONSE = "GET_RESPONSE";
+	 private static final String USER_LIST_GET_RESPONSE = "USER_LIST_GET_RESPONSE";
 	 private static final String POST_REQUEST_STRING = "POST_REQUEST_STRING";	
 	 private static final String POST_RESPONSE = "POST_RESPONSE";
 	 private static final String COMMENT_REQUEST_STRING = "POST_REQUEST_STRING";	
@@ -29,11 +29,11 @@ public class Context {
 	        return clz.cast(testContextMap().get(key));
 	    }
 
-	    public void setGetResponse(Object val){
-	        set(GET_RESPONSE,val);
+	    public void setUserListGetResponse(Object val){
+	        set(USER_LIST_GET_RESPONSE,val);
 	    }
-	    public Object getGetResponse(){
-	     return get(GET_RESPONSE);
+	    public Object getUserListGetResponse(){
+	     return get(USER_LIST_GET_RESPONSE);
 	    }
 	    public void setUri(String val){
 	        set(BASEURI,val);

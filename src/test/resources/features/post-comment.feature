@@ -5,6 +5,7 @@ Feature: Test the typicode posts, comment and user list json request
     Given User make a posts on typidode with below values
       | userId | title | body |
       |     10 | foo   | bar body|
+     
 
   @comment-post
   Scenario Outline: User make a  comment on a posts
@@ -17,6 +18,7 @@ Feature: Test the typicode posts, comment and user list json request
       | postid |
       |    100 |
 
-  @posts-get
+  @user-list-get
   Scenario: User get all the list of post
     Given User hit the typidode get request
+    Then User verifies the user count is 10
